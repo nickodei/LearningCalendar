@@ -27,7 +27,8 @@
                 <Label VerticalOptions="Center" Text="Startpunkt:"/>
                 <TimePicker x:Name="StartpunktTimePicker" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
-            <Button Text="Speichern" Clicked="Button_Clicked"></Button>
+            <Button x:Name="SpeichernButton" Text="Speichern" Clicked="SpeichernButton_Clicked"></Button>
+            <Button x:Name="LoeschenButton" Text="Löschen" Clicked="LoeschenButton_Clicked"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

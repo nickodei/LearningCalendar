@@ -21,11 +21,13 @@ namespace LernKalender.Views
         {
             InitializeComponent();
 
+            // Setze den Titel der Seite
             Title = "Neuer Eintrag";
 
-            _Lerneinheit = new Lerneinheit();
-            _Lerneinheit.Date = DateTime.Today;
+            // Eintrag noch nicht in der Datenbank vorhanden => nicht löschbar
+            LoeschenButton.IsVisible = false;
 
+            _Lerneinheit = new Lerneinheit() { Date = DateTime.Today };
             SetBindingContext();
         }
 
@@ -33,7 +35,16 @@ namespace LernKalender.Views
         {
             InitializeComponent();
 
+            // Setze den Titel der Seite
             Title = "Eintrag bearbeiten";
+
+            // Eintrag noch nicht in der Datenbank vorhanden
+            if (lerneinheit.ID == 0)
+            {               
+                // nicht löschbar
+                LoeschenButton.IsVisible = false;
+            }
+
             _Lerneinheit = lerneinheit;
             SetBindingContext();
         }
@@ -56,9 +67,15 @@ namespace LernKalender.Views
             StartpunktTimePicker.SetBinding(TimePicker.TimeProperty, "StartZeitpunkt");
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
+        private async void SpeichernButton_Clicked(object sender, EventArgs e)
         {
             await App.Database.SaveLerneinheitAsync(_Lerneinheit);
+            await Navigation.PopAsync();
+        }
+
+        private async void LoeschenButton_Clicked(object sender, EventArgs e)
+        {
+            await App.Database.DeleteLerneinheitAsync(_Lerneinheit);
             await Navigation.PopAsync();
         }
     }

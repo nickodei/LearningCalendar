@@ -77,8 +77,6 @@ namespace LernKalender
             await Task.WhenAll(tasks);
         }
 
-        #region Lerneinheit
-
         public Task<List<Lerneinheit>> GetLerneinheitenAsync()
         {
             return _database.Table<Lerneinheit>().OrderBy(x => x.Date).ToListAsync();
@@ -101,12 +99,9 @@ namespace LernKalender
             }
         }
 
-        #endregion
-
-        #region Kalendereintrag
-
-
-
-        #endregion
+        public Task DeleteLerneinheitAsync(Lerneinheit lerneinheit)
+        {
+            return _database.DeleteAsync(lerneinheit);
+        }
     }
 }
