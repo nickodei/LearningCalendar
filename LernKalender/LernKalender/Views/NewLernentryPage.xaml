@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="LernKalender.Views.NewLernentryPage">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <StackLayout Orientation="Horizontal">
+                <Label VerticalOptions="Center" Text="Tag:"/>
+                <DatePicker x:Name="DayDatePicker"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label VerticalOptions="Center" Text="Fach:"/>
+                <Entry x:Name="FachEntry" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label VerticalOptions="Center" Text="Kurzbeschreibung:"/>
+                <Entry x:Name="BeschreibungEntry" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label VerticalOptions="Center" Text="Dauer:"/>
+                <TimePicker x:Name="DauerTimePicker" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label VerticalOptions="Center" Text="Startpunkt:"/>
+                <TimePicker x:Name="StartpunktTimePicker" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+            <Button Text="Speichern" Clicked="Button_Clicked"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
