@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"             
+             x:Class="LearningCalendar.Views.DayViewPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Hinzufügen" Clicked="ToolbarItem_Clicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="LearningEntryListView"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"
+                ItemSelected="LearningEntryListView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Lesson}" FontSize="16" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start"/>
+                                <Label Text="{Binding Duration, StringFormat='\{0:h\\:mm\} Stunden'}"  Grid.Row="0" Grid.Column="1" HorizontalOptions="Center"/>
+                                <Label Text="{Binding StartingPoint, StringFormat='Ab \{0:hh\\:mm\} Uhr'}" Grid.Row="0" Grid.Column="2" HorizontalOptions="End" />
+                                <Label Text="{Binding Description}" Grid.Row="1" Grid.ColumnSpan="3" Padding="0, 15, 0, 0"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
